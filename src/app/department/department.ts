@@ -1,10 +1,10 @@
-class Departments{
-    name: string;
-    [subjects: string]: any;
-}
-
 export interface IDepartment {
     university: string;
     lastUpdatedTime: string;
-    departments: Departments[]
-}
+    departments: Department[];
+  }
+  
+export interface Department {
+    name: string;
+    subjects: string[];
+  }

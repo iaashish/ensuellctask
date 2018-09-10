@@ -15,4 +15,6 @@ export class DepartmentService {
   getDepartments(): Observable<IDepartment>{
     return this.http.get<IDepartment>(this._url);
   }
+
+
 }

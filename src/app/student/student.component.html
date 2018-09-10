@@ -1,3 +1,32 @@
-<p>
-  student works!
-</p>
+
+<div class="data-wrapper">
+    <ul class="filtered-student" >
+        <li *ngFor="let data of student">
+            <span class="name">{{data.familyName+", "+data.givenName}}</span>
+            <span class="dob">DOB: <span class="value">{{data.dob | date:'MM/d/yyyy'}}</span></span>
+            <span class="admit-date">Admitted: <span class="value">{{data.admitDate | date:'longDate'}}</span></span>
+            <span class="grad-date">Anticipated Graduation: <span class="value">{{data.anticipatedGraduationDate | date:'MMM y'}}</span></span>
+            <span class="mentor">Mentor: <span class="value">{{data.mentor.familyName+", "+data.mentor.givenName}}</span></span>
+        </li>
+    </ul>
+</div>
+
+<!-- 
+        <header> 
+            <!-- <app-department-detail></app-department-detail>
+            <section class="filter-list">
+                    <a class="btn btn-expand"  href="view2.html">></a>
+                    <div class="department-list">
+                        <div class="department">
+                            <div class="dept-name">All Departments</div>
+                            <div class="subjects-wrapper">
+                                <div class="subject-name active">All Subjects</div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+        </header>
+        <section>
+            <app-student></app-student>
+        </section>
+    </div> -->

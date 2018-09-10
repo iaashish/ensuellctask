@@ -1,3 +1,19 @@
-<p>
-  department works!
-</p>
+<div>
+    <header>
+        <section class="filter-list" *ngIf='show'>
+            <a class="btn btn-expand"  (click)="increasecomponent()">></a>
+            <div class="department-list">
+                <app-department-detail [displayx]="displayxi" [state]="cstate"  [studentDisplay]="displaystuu" [notAvailabe]="displaynot" [studentdup]="stuDisplay"></app-department-detail>
+                <div class="department">
+                <div class="dept-name">All Departments</div>
+                <div class="subjects-wrapper">
+                    <div class="subject-name active" (click)="switch()">All Subjects</div>
+                </div>
+                </div>
+            </div>
+        </section>
+    </header>
+    <section *ngIf="studDisplay">
+        <app-student></app-student>
+    </section>
+</div>

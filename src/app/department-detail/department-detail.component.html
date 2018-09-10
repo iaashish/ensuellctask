@@ -1,0 +1,28 @@
+<!-- <div class="filter-list expanded" >
+    <!-- <div class="department-list" > -->
+            <a *ngIf="displayx" class="btn btn-close" href="view1.html" (click)="changeView()">x</a>
+            <div class="department" *ngFor="let data of department" [@hidewindow]='state'>
+                <div class="dept-name">{{data.name}}</div>
+                <div class="subjects-wrapper">
+                    <div class="subject-name" *ngFor="let sub of data.subjects  | slice:0:5"><a [routerLink]="['/departments']" [queryParams]="{department: data.name, filter: sub }" queryParamsHandling="merge" (click)="changeSubData(data.name, sub)">
+                               {{sub}}</a></div>
+                </div>
+            </div>
+            
+            <!-- </div> -->
+            
+            <div class="data-wrapper" *ngIf="studentDisplay">
+                <ul class="filtered-student">
+                    <li *ngFor="let data of studentdup">
+                        <span class="name">{{data.familyName+", "+data.givenName}}</span>
+                        <span class="dob">DOB: <span class="value">{{data.dob | date:'MM/d/yyyy'}}</span></span>
+                        <span class="admit-date">Admitted: <span class="value">{{data.admitDate | date:'longDate'}}</span></span>
+                        <span class="grad-date">Anticipated Graduation: <span class="value">{{data.anticipatedGraduationDate | date:'MMM y'}}</span></span>
+                        <span class="mentor">Mentor: <span class="value">{{data.mentor.familyName+", "+data.mentor.givenName}}</span></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="data-wrapper" *ngIf="notAvailabe" [@hidewindow]='state'>
+                <h1>No data Available</h1>
+            </div>
+            <!-- <app-student *ngIf="display"></app-student> -->

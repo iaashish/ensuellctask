@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Student } from './student';
+import { RootService } from '../service/root.service';
 
 @Component({
   selector: 'app-student',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentComponent implements OnInit {
 
-  constructor() { }
+  private studentSubscription: Subscription;
+  private student: Student[];
+  @Input()studentdisp: boolean;
+  constructor(private rootService: RootService) { }
 
   ngOnInit() {
+    this.studentSubscription = this.rootService.observableStudent.subscribe(item=>{
+      this.student = item;
+    })
   }
 
 }
