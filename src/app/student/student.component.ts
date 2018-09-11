@@ -22,6 +22,6 @@ export class StudentComponent implements OnInit {
   }
 
   isValid(data){
-    return (data.length != 0);
+    return (data != undefined && data.length != 0);
   }
 }

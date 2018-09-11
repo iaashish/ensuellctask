@@ -3,8 +3,8 @@
         <section class="filter-list" *ngIf='show'>
             <a class="btn btn-expand"  (click)="increasecomponent()">></a>
             <div class="department-list">
-                <app-department-detail  [displayx]= 'displayxi' [state]="cstate" *ngIf='displaychild' [studentDisplay]="displaystuu" [notAvailabe]="displaynot" (valueChange)='displayStatus($event)' ></app-department-detail>
-                <div class="department">
+                <app-department-detail  [displayx]= 'displayxi' [state]="cstate" *ngIf='displaychild' [studentDisplay]="displaystuu" [notAvailabe]="displaynot" (valueChange)='displayStatus($event)' (studentParent)='displayStudent($event)' ></app-department-detail>
+                <div class="department"  *ngIf="alldepartments">
                 <div class="dept-name">All Departments</div>
                 <div class="subjects-wrapper">
                     <div class="subject-name active" (click)="switch()">All Subjects</div>
@@ -13,7 +13,7 @@
             </div>
         </section>
     </header>
-    <section *ngIf="studDisplay">
+    <section>
         <app-student></app-student>
     </section>
 </div>

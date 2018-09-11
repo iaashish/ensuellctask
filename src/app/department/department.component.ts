@@ -22,7 +22,7 @@ export class DepartmentComponent implements OnInit {
   displaystuu:boolean = false;
   stuDisplay = [];
   displaychild:boolean = false;
-
+  alldepartments:boolean = true;
   constructor(private rootService: RootService) { }
 
   ngOnInit() {
@@ -48,6 +48,10 @@ export class DepartmentComponent implements OnInit {
   
   displayStatus(status){
     this.studDisplay = false;
+  }
+
+  displayStudent(sta){
+    this.alldepartments = false;
   }
 
 }
