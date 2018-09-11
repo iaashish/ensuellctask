@@ -1,6 +1,5 @@
-
 <div class="data-wrapper">
-    <ul class="filtered-student" >
+    <ul class="filtered-student" *ngIf= "isValid(student)">
         <li *ngFor="let data of student">
             <span class="name">{{data.familyName+", "+data.givenName}}</span>
             <span class="dob">DOB: <span class="value">{{data.dob | date:'MM/d/yyyy'}}</span></span>
@@ -9,24 +8,5 @@
             <span class="mentor">Mentor: <span class="value">{{data.mentor.familyName+", "+data.mentor.givenName}}</span></span>
         </li>
     </ul>
+    <h1 *ngIf= "!isValid(student)"> No data Available </h1>
 </div>
-
-<!-- 
-        <header> 
-            <!-- <app-department-detail></app-department-detail>
-            <section class="filter-list">
-                    <a class="btn btn-expand"  href="view2.html">></a>
-                    <div class="department-list">
-                        <div class="department">
-                            <div class="dept-name">All Departments</div>
-                            <div class="subjects-wrapper">
-                                <div class="subject-name active">All Subjects</div>
-                            </div>
-                        </div>
-                    </div>
-            </section>
-        </header>
-        <section>
-            <app-student></app-student>
-        </section>
-    </div> -->

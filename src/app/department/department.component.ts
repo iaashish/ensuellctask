@@ -21,31 +21,33 @@ export class DepartmentComponent implements OnInit {
   displaynot:boolean = false;
   displaystuu:boolean = false;
   stuDisplay = [];
+  displaychild:boolean = false;
 
   constructor(private rootService: RootService) { }
 
   ngOnInit() {
-    this.rootService.getData();
-    this.subscription = this.rootService.observableDepartment.subscribe(item=>{
-      this.department=item;
-      });
-      // this.cstate = 'small';
-      // this.studDisplay = true;
-      // this.show = true; 
   }
+
   increasecomponent(){
    this.cstate = 'large';
    this.studDisplay = false;
   //  this.show = false; 
     this.displayxi = true;
+    this.displaychild = true;
   }
+
   switch(){
+    this.rootService.getStudentsData();
+    this.displaychild = false;
+    this.cstate = 'small';
     this.studDisplay = true;
     this.displayxi = false;
-    this.rootService.getData();
-    this.displaynot = false;
     this.displaystuu = false;
-    this.cstate = 'small';
-    this.stuDisplay = [];
+    this.rootService.getData();
   }
+  
+  displayStatus(status){
+    this.studDisplay = false;
+  }
+
 }

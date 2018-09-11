@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { RootService } from '../service/root.service';
 import { Subscription } from 'rxjs';
 import { IDepartment, Department } from '../department/department';
@@ -24,59 +24,39 @@ import { Student } from '../student/student';
 })
 export class DepartmentDetailComponent implements OnInit {
 
-  private deptSubscription: Subscription;
   private department: Department[];
-  private departmentdup: Department[];
   @Input() state: string;
   @Input() displayx: boolean;
-  private dep: any;
-  private sub: any;
-  private studentSubscription: Subscription;
-  private student: Student[];
-  @Input() studentdup: Student[];
-  // private route: Route;
+  private student: Subscription;
   @Input() notAvailabe:boolean;
   @Input() studentDisplay:boolean;
-  private display:boolean = false;
+  @Output() valueChange = new EventEmitter();
+
   constructor(
       private rootService: RootService,
       private route: ActivatedRoute,
       private router: Router
             ) { }
-  
-  
     ngOnInit() {
       this.rootService.observableDepartment.subscribe(item=>{
         this.department=item;
       });
-      this.rootService.observableStudent.subscribe(item =>{
-        this.student = item;
-      });
-      this.studentdup = [];
-      this.displayx = false;
-      this.departmentdup = this.department;
   }
+
   changeSubData(data, sub){
+    this.valueChange.emit(false);
+    this.rootService.getFilterDepartment(data);
+    this.rootService.getFilterStudentData(data, sub);
     this.studentDisplay = true;
-    this.notAvailabe = false;
-    this.display = true;
-    this.route.queryParams
-    .subscribe(params => this.dep = params.department);
-    // this.rootService.getData();
-    this.department = this.department.filter(items=> items.name == data);
-    this.studentdup = this.student.filter(items=> items.department== data && items.subject==sub);
-    if(this.studentdup.length == 0){
-      this.notAvailabe = true;
-    }
   }
+
   changeRoute(){
     this.router.navigate(['/departments']);
   }
 
   changeView(){
     this.state='small';
-    this.studentdup = [];
     this.rootService.getData();
-    this.notAvailabe = false;
+    this.studentDisplay = false;
   }
 }

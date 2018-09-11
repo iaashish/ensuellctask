@@ -1,3 +1,4 @@
-<div class="department-name-tooltip">
-  <div class=".tooltip-content">{{deptName}}</div>
+<div *ngIf="showtooltip" class="department-name-tooltip" [ngStyle]="{'top':topexp}">
+  <div class="tooltip-content">{{deptName}}</div>
   </div>
+  <span id="dname">{{deptName}}</span>

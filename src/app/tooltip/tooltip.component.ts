@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-tooltip',
@@ -7,9 +7,25 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TooltipComponent implements OnInit {
 
-  @Input()deptName: string;
+  @Input() deptName: string;
+  private topexp: any;
+  private showtooltip:boolean = false;
+  constructor(
+    private element: ElementRef
+  ) { }
 
-  constructor() { }
+  @HostListener('mouseover') onHover() {
+
+    if(this.element.nativeElement.offsetWidth > this.element.nativeElement.parentElement.clientWidth){
+      this.showtooltip = true;
+      this.topexp = (this.element.nativeElement.offsetTop - 40) +'px';
+    }
+  }
+
+  @HostListener('mouseleave', ['$event.target'])
+  onMouseLeave(target): void {
+    this.showtooltip = false;
+  }
 
   ngOnInit() {
   }

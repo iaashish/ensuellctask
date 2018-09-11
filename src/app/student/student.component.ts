@@ -16,9 +16,12 @@ export class StudentComponent implements OnInit {
   constructor(private rootService: RootService) { }
 
   ngOnInit() {
-    this.studentSubscription = this.rootService.observableStudent.subscribe(item=>{
+    this.rootService.observableStudent.subscribe(item=>{
       this.student = item;
     })
   }
 
+  isValid(data){
+    return (data.length != 0);
+  }
 }
