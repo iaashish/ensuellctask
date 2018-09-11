@@ -93,7 +93,6 @@ export class DepartmentDetailComponent implements OnInit {
           this.moreFlag = true;
           return i-1;
         }
-
       }
       return subjects.length;
     }else{

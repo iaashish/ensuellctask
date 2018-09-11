@@ -7,9 +7,7 @@
 		<div class="subject-name" *ngFor="let sub of data.subjects  | slice:0:getnumber(data.subjects)">
 			<a [routerLink]="['/departments']" [queryParams]="{department: data.name, filter: sub }" queryParamsHandling="merge" (click)="changeSubData(data.name, sub)">
 							   {{sub}}</a>
-							   
 		</div>
 		<div class="additional-subject" *ngIf="moreFlag"><a (click)='showAdditional(data.name)'>+ {{remained}} more</a></div>
 	</div>
 </div>
-<!-- <app-student *ngIf="studentDisplay" [@hidewindow]='state' ></app-student> -->

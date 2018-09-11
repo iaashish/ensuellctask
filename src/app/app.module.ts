@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes }  from '@angular/router';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
-import { DepartmentService } from './department/department.service';
 import { DepartmentComponent } from './department/department.component';
 import { StudentComponent } from './student/student.component';
 import { RootService } from './service/root.service';
@@ -38,7 +37,7 @@ const approutes: Routes = [
   exports: [
     RouterModule
   ],
-  providers: [DepartmentService,RootService],
+  providers: [RootService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
