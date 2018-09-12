@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DepartmentService } from './department/department.service';
 import { IDepartment, Department } from '../app/department/department';
 import { RootContext } from '@angular/core/src/render3/interfaces/view';
 import { RootService } from './service/root.service';
