@@ -84,7 +84,7 @@ export class DepartmentDetailComponent implements OnInit {
       if(this.valueofparent == 0){
         this.valueofparent = this.element.nativeElement.querySelector('.subjects-wrapper').offsetWidth;
       }
-      var parentElement = this.valueofparent - 100;
+      var parentElement = this.valueofparent - 200;
       var number = 0
       for(var i =0;i<subjects.length;i++){
         number += context.measureText(subjects[i]).width;
